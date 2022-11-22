@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Client, Intents } = require("discord.js");
 const express = require('express')
 const app = express()
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 const server = app.listen(port)
 server.keepAliveTimeout = 60 * 1000;
 server.headersTimeout = 61 * 1000;
@@ -56,5 +56,9 @@ client.on('message', async function(message) {
     }
 });
 
+
+app.get('/', (req, res) => {
+    res.send('Hello World, from express');
+});
 
 client.login(process.env.TOKEN);
