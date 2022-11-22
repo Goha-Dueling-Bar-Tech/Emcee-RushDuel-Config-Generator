@@ -3,7 +3,7 @@ Generates [Emcee](https://github.com/DawnbrandBots/emcee-tournament-bot) compati
 
 ### HOWTO Get
 
-Follow the instructions in the [HOWTO guide](https://incomparable-sfogliatella-4cfbb9.netlify.app)
+Follow the instructions in the [HOWTO Guide](https://taupe-fairy-1aaaa9.netlify.app)
 
 ### HOWTO Run
 
