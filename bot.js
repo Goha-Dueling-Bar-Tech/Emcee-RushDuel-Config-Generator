@@ -6,6 +6,7 @@ const port = process.env.PORT
 const server = app.listen(port)
 server.keepAliveTimeout = 60 * 1000;
 server.headersTimeout = 61 * 1000;
+const fs = require('fs')
 
 const { makeConfig } = require("./worker")
 
@@ -29,24 +30,28 @@ client.on('message', async function(message) {
 
         if (command.toLowerCase() === 'prerelease') {
             await makeConfig(command.toLowerCase())
-            client.channels.cache.get(message.channelId).send({
+            await client.channels.cache.get(message.channelId).send({
                 files: ['./prerelease.json']
             })
+            await fs.unlinkSync('./prerelease.json')
         } else if (command.toLowerCase() === 'contemporary') {
             await makeConfig(command.toLowerCase())
-            client.channels.cache.get(message.channelId).send({
+            await client.channels.cache.get(message.channelId).send({
                 files: ['./contemporary.json']
             })
+            await fs.unlinkSync('./contemporary.json')
         } else if (command.toLowerCase() === 'highlander-prerelease') {
             await makeConfig(command.toLowerCase())
-            client.channels.cache.get(message.channelId).send({
+            await client.channels.cache.get(message.channelId).send({
                 files: ['./highlander-prerelease.json']
             })
+            await fs.unlinkSync('./highlander-prerelease.json')
         } else if (command.toLocaleLowerCase() === 'highlander-contemporary') {
             await makeConfig(command.toLowerCase())
-            client.channels.cache.get(message.channelId).send({
+            await client.channels.cache.get(message.channelId).send({
                 files: ['./highlander-contemporary.json']
             })
+            await fs.unlinkSync('./highlander-contemporary.json')
         }
     }
 });
